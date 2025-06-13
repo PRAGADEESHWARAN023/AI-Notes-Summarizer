@@ -53,6 +53,7 @@ GRANT ALL PRIVILEGES ON DATABASE notes_summarizer_db TO summarizer_user;
 Create a `.env` file and add:
 
 ```env
+DEEPAI_API_KEY=your API_Key
 SECRET_KEY=your_django_secret_key
 DEBUG=True
 DB_NAME=notes_summarizer_db
