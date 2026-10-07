@@ -138,8 +138,8 @@ REST_FRAMEWORK = {
 }
 
 
-GENAI_API_KEY = os.environ.get('GENAI_API_KEY', 'AIzaSyB7cwU5N7ngOc2_olG0wcUEGh7OOJr_DeA')  
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'w*83!=+zvf0l()c+mkuwwf!rrpl(pgf#k*wht!ftha3byxoo1g')
+GENAI_API_KEY = os.environ.get('GENAI_API_KEY', '')  
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
