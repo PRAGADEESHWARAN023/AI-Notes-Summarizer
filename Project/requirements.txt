@@ -1,6 +1,0 @@
-Django>=3.2,<4.0
-djangorestframework
-PyMuPDF
-python-dotenv
-djangorestframework-simplejwt
-psycopg2-binary

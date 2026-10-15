@@ -1,0 +1,12 @@
+Django>=5.2,<6.0
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+PyMuPDF
+python-dotenv
+psycopg2-binary
+google-generativeai
+pytest
+pytest-django
+python-decouple
+openai

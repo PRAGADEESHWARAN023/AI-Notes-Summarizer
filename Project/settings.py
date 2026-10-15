@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 from decouple import config
 
+LLM_API_KEY = config("LLM_API_KEY", default="")
+LLM_BASE_URL = config("LLM_BASE_URL", default="https://api.groq.com/openai/v1")
+LLM_MODEL = config("LLM_MODEL", default="")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -79,13 +82,13 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'AI-Summarizer',
-    'USER': 'postgres',
-    'PASSWORD': 12345,
-    'HOST': 'localhost',
-    'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME", "notes_db"),
+        "USER": os.getenv("DB_USER", "postgres"),
+        "PASSWORD": os.getenv("DB_PASSWORD", "postgres"),
+        "HOST": os.getenv("DB_HOST", "localhost"),
+        "PORT": os.getenv("DB_PORT", "5432"),
     }
 }
 
@@ -139,7 +142,7 @@ REST_FRAMEWORK = {
 
 
 GENAI_API_KEY = os.environ.get('GENAI_API_KEY', '')  
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+SECRET_KEY = config("SECRET_KEY")
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
