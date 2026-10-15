@@ -1,4 +1,5 @@
 import logging
+
 from django.conf import settings
 from openai import OpenAI, OpenAIError
 
@@ -10,6 +11,11 @@ SYSTEM_PROMPT = (
     "You summarize study notes. Return a short summary, then "
     "5-8 key points as bullet points. Do not invent facts."
 )
+
+
+class LLMError(Exception):
+    """The AI provider failed (bad key, rate limit, timeout, outage...)."""
+
 
 def summarize_text(text: str) -> str:
     client = OpenAI(
@@ -27,6 +33,6 @@ def summarize_text(text: str) -> str:
             temperature=0.3,
         )
         return resp.choices[0].message.content.strip()
-    except OpenAIError:
+    except OpenAIError as exc:
         logger.exception("LLM request failed")
-        raise
+        raise LLMError("LLM request failed") from exc
